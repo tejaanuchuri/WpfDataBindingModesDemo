@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfDataBindingModesDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDataBindingModesDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Name="OneWayStackPanel" Orientation="Vertical">
+        <Label HorizontalAlignment="Center">This One Way Demo When Source Updated Automatically Target Updated</Label>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider1" Minimum="0" Maximum="100"/>
+        <TextBox Name="MyTextBox1" Width="50" Text="{Binding ElementName=MySlider1,Path=Value,Mode=OneWay}"/>
+
+        <Label HorizontalAlignment="Center">This Two Way Demo While Property changed automatically source and target updated viseversa</Label>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider2" Minimum="0" Maximum="100"/>
+        <TextBox Name="MyTextBox2" Width="50" Text="{Binding ElementName=MySlider2,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label HorizontalAlignment="Center">This One Way Demo  While Source updated automatically Target updated</Label>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider3" Minimum="0" Maximum="100"/>
+        <TextBox Name="MyTextBox3" Width="50" Text="{Binding ElementName=MySlider3,Path=Value,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label HorizontalAlignment="Center">This One Way To Source Demo  While Source updated Target was not updated</Label>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider4" Minimum="0" Maximum="100"/>
+        <TextBox Name="MyTextBox4" Width="50" Text="{Binding ElementName=MySlider4,Path=Value,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label HorizontalAlignment="Center">This One Time Demo  While Source updated Target was not updated</Label>
+        <Slider IsSnapToTickEnabled="True" Name="MySlider5" Minimum="0" Maximum="100"/>
+        <TextBox Name="MyTextBox5" Width="50" Text="{Binding ElementName=MySlider5,Path=Value,Mode=OneTime,UpdateSourceTrigger=PropertyChanged}"/>
+
+    </StackPanel>
+
+</Window>
